@@ -1,0 +1,22 @@
+TASK A5.1:
+Cancellazione e aggiunta di concetti:
+1) Eliminazione di Feature -> Attribute e Reference collegate direttamente a Entity.
+2) Eliminazione di Content -> Dynamic Content collegato a tutti.
+3) Aggiunta concetto Pubblicità.
+
+Perfezionamenti strutturali, ad esempio:
+Aggiunta/rimozione di gerarchie:
+1) Eliminazione di Feature
+2) Eliminazione di Content
+3) Aggiunta di NamedElement alcuni concetti
+
+Aggiunta/rimozione di caratteristiche strutturali (ad es. attributi e riferimenti):
+1) Aggiunta dell'attributo Title nel concept Pagina.
+2) Aggiunta dell'attributo Image nel concept Advertisment.
+3) Aggiunta della reference advertisments al concetto Pagina.
+
+Modificare l'attributo:
+1) Modifica dell'attributo tooltip con hint
+
+TASK A5.2:
+Utilizzo di ETL
