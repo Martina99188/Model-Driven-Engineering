@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gl:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:gl="http://it.disim.mde/newGlot" name="University" version="10" subversion="1">
+  <entities name="Person">
+    <attributes name="id" isPrimaryKey="true" type="int"/>
+    <attributes name="name"/>
+    <attributes name="surname"/>
+    <attributes name="curriculum" type="Text"/>
+    <attributes name="registrationNumber" type="int"/>
+    <references name="referenceDiProva" foreignKey="//@entities.0"/>
+  </entities>
+  <pages name="Course" links="//@pages.1" title="null">
+    <indexes name="Teachers">
+      <individuals name="teacher0" enity="//@entities.0"/>
+      <individuals name="teacher1" id="1" enity="//@entities.0"/>
+    </indexes>
+    <indexes name="Students">
+      <individuals name="student1" id="1" enity="//@entities.0"/>
+      <individuals name="student2" id="2" enity="//@entities.0"/>
+      <individuals name="student3" id="3" enity="//@entities.0"/>
+    </indexes>
+    <forms name="searchPersonForm" form="//@forms.0"/>
+  </pages>
+  <pages name="Course2" links="//@pages.0" title="null">
+    <indexes name="Teachers">
+      <individuals name="teacher0" enity="//@entities.0"/>
+    </indexes>
+    <indexes name="Students">
+      <individuals name="student1" id="1" enity="//@entities.0"/>
+      <individuals name="student2" id="2" enity="//@entities.0"/>
+    </indexes>
+  </pages>
+  <forms name="searchPerson" method="GET" entity="//@entities.0">
+    <elements name="name" label="insert name here" hint="insert a string" attribute="//@entities.0/@attributes.1"/>
+    <elements name="surname" label="insert surname here" hint="insert a string" attribute="//@entities.0/@attributes.2"/>
+  </forms>
+</gl:System>

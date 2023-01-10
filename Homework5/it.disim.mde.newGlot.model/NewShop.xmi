@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gl:System xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:gl="http://it.disim.mde/newGlot"
+    name="Amazon"
+    version="1"
+    subversion="2">
+  <entities
+      name="Product">
+    <attributes
+        name="id"
+        isPrimaryKey="true"
+        type="int"/>
+    <attributes
+        name="name"/>
+    <attributes
+        name="description"
+        type="Text"/>
+    <attributes
+        name="price"
+        type="double"/>
+    <attributes
+        name="pictures"
+        type="Images"/>
+    <attributes
+        name="quantity"
+        type="int"/>
+  </entities>
+  <entities
+      name="Comment">
+    <attributes
+        name="id"
+        isPrimaryKey="true"
+        type="int"/>
+    <attributes
+        name="commentText"
+        type="Text"/>
+    <references
+        name="reviewedProduct"
+        foreignKey="//@entities.0"/>
+  </entities>
+  <pages name="ProductPage"
+      title="null">
+    <indexes
+        name="product">
+      <individuals
+          name="Product"
+          enity="//@entities.0"/>
+    </indexes>
+    <indexes
+        name="discountedProducts">
+      <individuals
+          name="firstDiscountedProduct"
+          enity="//@entities.0"/>
+      <individuals
+          name="secondDiscountedProduct"
+          id="1"
+          enity="//@entities.0"/>
+    </indexes>
+    <indexes
+        name="comments">
+      <individuals
+          name="comment2"
+          id="2"
+          enity="//@entities.1"/>
+      <individuals
+          name="comment3"
+          id="3"
+          enity="//@entities.1"/>
+    </indexes>
+    <forms name="orderProductForm"
+        form="//@forms.0"/>
+    <forms name="writeCommentForm"
+        form="//@forms.1"/>
+  </pages>
+  <pages name="Product2Page"
+      links="//@pages.0 //@pages.1"
+      title="null">
+    <indexes
+        name="discountedProducts">
+      <individuals
+          name="thirdDiscountedProduct"
+          id="3"
+          enity="//@entities.0"/>
+    </indexes>
+    <indexes
+        name="comments">
+      <individuals
+          name="comment1"
+          id="1"
+          enity="//@entities.1"/>
+    </indexes>
+  </pages>
+  <forms name="orderProduct"
+      entity="//@entities.0">
+    <elements
+        name="name"
+        label="insert name here"
+        hint="insert a string"
+        attribute="//@entities.0/@attributes.1"/>
+    <elements
+        name="quantity"
+        label="insert quantity here"
+        hint="insert a number"
+        attribute="//@entities.0/@attributes.5"/>
+  </forms>
+  <forms name="writeComment"
+      entity="//@entities.1">
+    <elements
+        name="productName"
+        label="insert name of the product here"
+        hint="insert only strings"
+        attribute="//@entities.0/@attributes.1"/>
+    <elements
+        name="comment"
+        label="insert the comment here"
+        hint="maximum text chars is 255"
+        attribute="//@entities.1/@attributes.1"/>
+  </forms>
+</gl:System>

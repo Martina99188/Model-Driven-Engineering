@@ -1,0 +1,26 @@
+[comment encoding = UTF-8 /]
+[module generate('http://it.disim.mde/newGlot')]
+[import it::disim::mde::newGlot::acceleo::main::entity /]
+
+[template public generateElement(aSystem : System) post (trim())]
+[comment @main/]
+[file (aSystem.name, false, 'UTF-8')]
+-- text file generated in homework 5
+
+
+[for (entity : Entity | aSystem.entities) separator ('\n\n')]
+[generateEntity(entity)/]
+[/for]
+
+
+[for (entity : Entity | aSystem.entities) separator ('\n\n')]
+[generateSimpleSelect(entity)/]
+[/for]
+
+
+[for (entity : Entity | aSystem.entities) separator ('\n\n')]
+[generateSelect(entity)/]
+[/for]
+
+[/file]
+[/template]

@@ -1,0 +1,22 @@
+[comment encoding = UTF-8 /]
+[module entity('http://it.disim.mde/newGlot')]
+[import it::disim::mde::newGlot::acceleo::main::attributes /]
+[import it::disim::mde::newGlot::acceleo::main::reference /]
+
+[template public generateEntity(anEntity : Entity) post (replaceAll('\n,', ',\n'))]
+-- create table statement for entity [anEntity.name/] 
+CREATE TABLE [anEntity.name/](
+[for (attribute : Attribute| anEntity.attributes)separator (',')]['\t'/][generateAttribute(attribute)/]
+[/for][if (anEntity.references->size() > 0)],[/if][for (reference : Reference | anEntity.references) separator (',')]['\t'/][generateReference(reference)/]
+[/for]);
+[/template]
+
+[template public generateSimpleSelect(anEntity : Entity)]
+-- simple select for entity: [anEntity.name/]
+SELECT [for (attribute : Attribute| anEntity.attributes) separator (', ')][attribute.name/][/for] FROM [anEntity.name/];
+[/template]
+
+[template public generateSelect(anEntity : Entity)]
+-- selecting content for entity: [anEntity.name/]
+SELECT [for (attribute : Attribute| anEntity.attributes) separator (', ')][attribute.name/][/for] FROM [anEntity.name/] WHERE [anEntity.attributes -> select(attr | attr.isPrimaryKey = true).name/] = ?;
+[/template]

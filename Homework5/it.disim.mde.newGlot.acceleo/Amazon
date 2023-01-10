@@ -1,0 +1,37 @@
+-- text file generated in homework 5
+
+
+-- create table statement for entity Product 
+CREATE TABLE Product(
+	id INT PRIMARY KEY,
+	name VARCHAR(255),
+	description TEXT,
+	price DOUBLE(10,4),
+	pictures BLOB,
+	quantity INT
+);
+
+
+-- create table statement for entity Comment 
+CREATE TABLE Comment(
+	id INT PRIMARY KEY,
+	commentText TEXT,
+	reviewedProduct INT FOREIGN KEY REFERENCES Product(id)
+);
+
+
+-- simple select for entity: Product
+SELECT id, name, description, price, pictures, quantity FROM Product;
+
+
+-- simple select for entity: Comment
+SELECT id, commentText FROM Comment;
+
+
+-- selecting content for entity: Product
+SELECT id, name, description, price, pictures, quantity FROM Product WHERE id = ?;
+
+
+-- selecting content for entity: Comment
+SELECT id, commentText FROM Comment WHERE id = ?;
+

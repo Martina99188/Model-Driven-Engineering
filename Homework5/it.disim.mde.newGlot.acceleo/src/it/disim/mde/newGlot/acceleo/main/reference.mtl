@@ -1,0 +1,30 @@
+[comment encoding = UTF-8 /]
+[module reference('http://it.disim.mde/newGlot')]
+
+[template public generateReference(aReference : Reference) post (replaceAll('\n', ' ').trim())]
+[aReference.name/]
+[if (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::int)]
+INT
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::String)]
+VARCHAR(255)
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::boolean)]
+BIT
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::Text)]
+TEXT
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::Date)]
+DATE
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::File)]
+BLOB
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::Currency)]
+DECIMAL(10,2)
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::Percent)]
+DECIMAL(4,2)
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::Image)]
+BLOB
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::Images)]
+BLOB
+[elseif (aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).type->first() = _DataType::double)]
+DOUBLE(10,4)
+[/if]
+FOREIGN KEY REFERENCES [aReference.foreignKey.name/]([aReference.foreignKey.attributes->select(a | a.isPrimaryKey = true).name/])
+[/template]

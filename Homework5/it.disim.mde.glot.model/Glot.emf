@@ -1,0 +1,99 @@
+@namespace(uri="https://it.disim.mde/glot", prefix="gl")
+package Glot;
+
+abstract class NamedElement {
+	attr String[1] name;
+}
+
+class System extends NamedElement {
+	attr int[1] version;
+	attr int[1] subversion;
+	val DataConcern.Entity[*] entities;
+	val ContentConcern.Page[*] pages;
+	val FormConcern.Form[*] forms;
+}
+
+@namespace(uri="https://it.disim.mde/glot/dataConcern", prefix="dc")
+package DataConcern {
+	abstract class Feature extends NamedElement {
+	}
+
+	class Attribute extends Feature {
+		attr boolean[1] isPrimaryKey = false;
+		attr _DataType[1] type;
+	}
+
+	enum _DataType {
+		String = 0;
+		int = 0;
+		Text = 0;
+		boolean = 0;
+		Date = 0;
+		File = 0;
+		Currency = 0;
+		Percent = 0;
+		Image = 0;
+		Images = 0;
+		double = 0;
+	}
+
+	class Entity extends NamedElement {
+		val Feature[+] features;
+	}
+
+	class Reference extends Feature {
+		ref Entity foreignKey;
+	}
+
+}
+
+@namespace(uri="https://it.disim.mde/glot/contentConcern", prefix="cc")
+package ContentConcern {
+	class Page extends NamedElement {
+		ref Page[*] links;
+		val Index[*] indexes;
+		val DynamicForm[*] forms;
+	}
+
+	abstract class Content extends NamedElement {
+	}
+
+	abstract class DynamicContent extends Content {
+	}
+
+	class Index extends DynamicContent {
+		val Individual[*] individuals;
+	}
+
+	class Individual extends DynamicContent {
+		attr int[1] ~id;
+		ref DataConcern.Entity[1] enity;
+	}
+
+	class DynamicForm extends Content {
+		ref FormConcern.Form[1] form;
+	}
+
+}
+
+@namespace(uri="https://it.disim.mde/glot/formConcern", prefix="fc")
+package FormConcern {
+	enum _MethodType {
+		POST = 0;
+		GET = 0;
+	}
+
+	class Element extends NamedElement {
+		attr String[1] label;
+		attr String[1] tooltip;
+		ref DataConcern.Attribute attribute;
+	}
+
+	class Form extends NamedElement {
+		attr _MethodType[1] method;
+		val Element[*] elements;
+		ref DataConcern.Entity entity;
+	}
+
+}
+

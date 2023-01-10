@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gl:System xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dc="https://it.disim.mde/glot/dataConcern"
+    xmlns:gl="https://it.disim.mde/glot"
+    xsi:schemaLocation="https://it.disim.mde/glot/dataConcern https://it.disim.mde/glot/formConcern#//DataConcern https://it.disim.mde/glot https://it.disim.mde/glot/formConcern"
+    name="University"
+    version="10"
+    subversion="1">
+  <entities
+      name="Person">
+    <features
+        xsi:type="dc:Attribute"
+        name="id"
+        isPrimaryKey="true"
+        type="int"/>
+    <features
+        xsi:type="dc:Attribute"
+        name="name"/>
+    <features
+        xsi:type="dc:Attribute"
+        name="surname"/>
+    <features
+        xsi:type="dc:Attribute"
+        name="curriculum"
+        type="Text"/>
+    <features
+        xsi:type="dc:Attribute"
+        name="registrationNumber"
+        type="int"/>
+    <features
+        xsi:type="dc:Reference"
+        name="referenceDiProva"
+        foreignKey="//@entities.0"/>
+  </entities>
+  <pages name="Course"
+      links="//@pages.1">
+    <indexes
+        name="Teachers">
+      <individuals
+          name="teacher0"
+          enity="//@entities.0"/>
+      <individuals
+          name="teacher1"
+          id="1"
+          enity="//@entities.0"/>
+    </indexes>
+    <indexes
+        name="Students">
+      <individuals
+          name="student1"
+          id="1"
+          enity="//@entities.0"/>
+      <individuals
+          name="student2"
+          id="2"
+          enity="//@entities.0"/>
+      <individuals
+          name="student3"
+          id="3"
+          enity="//@entities.0"/>
+    </indexes>
+    <forms name="searchPersonForm"
+        form="//@forms.0"/>
+  </pages>
+  <pages name="Course2"
+      links="//@pages.0">
+    <indexes
+        name="Teachers">
+      <individuals
+          name="teacher0"
+          enity="//@entities.0"/>
+    </indexes>
+    <indexes
+        name="Students">
+      <individuals
+          name="student1"
+          id="1"
+          enity="//@entities.0"/>
+      <individuals
+          name="student2"
+          id="2"
+          enity="//@entities.0"/>
+    </indexes>
+  </pages>
+  <forms name="searchPerson"
+      method="GET"
+      entity="//@entities.0">
+    <elements
+        name="name"
+        label="insert name here"
+        tooltip="insert a string"
+        attribute="//@entities.0/@features.1"/>
+    <elements
+        name="surname"
+        label="insert surname here"
+        tooltip="insert a string"
+        attribute="//@entities.0/@features.2"/>
+  </forms>
+</gl:System>

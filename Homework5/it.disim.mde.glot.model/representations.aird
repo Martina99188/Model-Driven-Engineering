@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" uid="_f_P1UHsJEe2Iq5ix8xk_BA" version="14.5.0.202104161500">
+  <semanticResources>Glot.ecore</semanticResources>
+  <semanticResources>Course.xmi</semanticResources>
+  <semanticResources>Shop.xmi</semanticResources>
+  <semanticResources>Glot.genmodel</semanticResources>
+  <semanticResources>Glot.emf</semanticResources>
+  <semanticResources>Sample.xmi</semanticResources>
+</viewpoint:DAnalysis>

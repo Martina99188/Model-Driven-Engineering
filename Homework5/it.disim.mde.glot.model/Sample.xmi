@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gl:System xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gl="https://it.disim.mde/glot"
+    xsi:schemaLocation="https://it.disim.mde/glot https://it.disim.mde/glot/formConcern">
+  <entities>
+    <attributes/>
+    <attributes/>
+    <references/>
+  </entities>
+  <entities/>
+  <pages>
+    <indexes>
+      <individuals/>
+    </indexes>
+    <indexes/>
+    <indexes/>
+    <forms form="//@forms.0"/>
+    <forms/>
+    <forms/>
+  </pages>
+  <forms/>
+</gl:System>

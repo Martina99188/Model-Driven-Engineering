@@ -1,0 +1,29 @@
+[comment encoding = UTF-8 /]
+[module attributes('http://it.disim.mde/newGlot')]
+
+[template public generateAttribute(anAttribute : Attribute) post (replaceAll('\n', ' ').trim())]
+[anAttribute.name/]
+[if (anAttribute.type = _DataType::int)]
+INT
+[elseif (anAttribute.type = _DataType::String)]
+VARCHAR(255)
+[elseif (anAttribute.type = _DataType::boolean)]
+BIT
+[elseif (anAttribute.type = _DataType::Text)]
+TEXT
+[elseif (anAttribute.type = _DataType::Date)]
+DATE
+[elseif (anAttribute.type = _DataType::File)]
+BLOB
+[elseif (anAttribute.type = _DataType::Currency)]
+DECIMAL(10,2)
+[elseif (anAttribute.type = _DataType::Percent)]
+DECIMAL(4,2)
+[elseif (anAttribute.type = _DataType::Image)]
+BLOB
+[elseif (anAttribute.type = _DataType::Images)]
+BLOB
+[elseif (anAttribute.type = _DataType::double)]
+DOUBLE(10,4)
+[/if][if (anAttribute.isPrimaryKey = true)]PRIMARY KEY[/if]
+[/template]

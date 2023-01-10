@@ -1,0 +1,21 @@
+-- text file generated in homework 5
+
+
+-- create table statement for entity Person 
+CREATE TABLE Person(
+	id INT PRIMARY KEY,
+	name VARCHAR(255),
+	surname VARCHAR(255),
+	curriculum TEXT,
+	registrationNumber INT,
+	referenceDiProva INT FOREIGN KEY REFERENCES Person(id)
+);
+
+
+-- simple select for entity: Person
+SELECT id, name, surname, curriculum, registrationNumber FROM Person;
+
+
+-- selecting content for entity: Person
+SELECT id, name, surname, curriculum, registrationNumber FROM Person WHERE id = ?;
+

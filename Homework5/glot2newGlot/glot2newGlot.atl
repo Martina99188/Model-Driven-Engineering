@@ -1,0 +1,131 @@
+-- @path Glot=/glot2newGlot/Glot.ecore
+-- @path NewGlot=/glot2newGlot/NewGlot.ecore
+
+module glot2newGlot;
+create OUT: NewGlot from IN: Glot;
+
+helper context Glot!Feature def: isAttribute(): Boolean =
+	if self.oclIsTypeOf(Glot!Attribute)
+		then true
+		else false
+	endif;
+
+helper context Glot!Feature def: isReference(): Boolean =
+	if self.oclIsTypeOf(Glot!Reference)
+		then true
+		else false
+	endif;
+
+rule System2NewSystem{
+	from
+		a: Glot!System
+	to
+		b: NewGlot!System(
+				name <- a.name,
+				entities <- a.entities,
+				forms <- a.forms,
+				pages <- a.pages,
+				version <- a.version,
+				subversion <- a.subversion
+		)
+}
+
+rule Attribute2NewAttribute{
+	from
+		a: Glot!Attribute
+	to
+		b: NewGlot!Attribute(
+			name <- a.name,
+			type <- a.type,
+			isPrimaryKey <- a.isPrimaryKey
+		)
+}
+
+rule reference2NewReference {
+	from
+		a: Glot!Reference
+	to 
+		b: NewGlot!Reference (
+			name <- a.name,
+			foreignKey <- a.foreignKey
+		)
+}
+
+rule Entity2NewEntity{
+	from
+		a: Glot!Entity
+	to
+		b: NewGlot!Entity(
+					name <- a.name,
+					attributes <- a.features->select(feature | feature.isAttribute()),
+					references <- a.features->select(feature | feature.isReference())
+		)
+}
+
+rule Page2NewPage{
+	from
+		a: Glot!Page
+	to
+		b: NewGlot!Page(
+			name <- a.name,
+			links <- a.links,
+			forms <- a.forms,
+			indexes <- a.indexes,
+			title <- 'null'
+		)
+}
+
+rule Index2NewIndex {
+	from
+		a : Glot!Index
+	to 
+		b : NewGlot!Index (
+			name <- a.name,
+			individuals <- a.individuals
+		)
+}
+
+rule Individual2NewIndividual {
+	from
+		a: Glot!Individual
+	to 
+		b: NewGlot!Individual(
+			name <- a.name,
+			id <- a.id,
+			enity <- a.enity
+		)
+}
+
+rule DynamicForm2NewDynamicForm {
+	from
+		a : Glot!DynamicForm
+	to 
+		b : NewGlot!DynamicForm (
+			name <- a.name,
+			form <- a.form
+		)
+}
+
+rule Element2NewElement {
+	from
+		a : Glot!Element
+	to 
+		b: NewGlot!Element(
+			name <- a.name,
+			label <- a.label,
+			hint <- a.tooltip,
+			attribute <- a.attribute
+		)
+}
+
+rule Form2NewForm {
+	from
+		a : Glot!Form
+	to 
+		b : NewGlot!Form (
+			name <- a.name,
+			entity <- a.entity,
+			elements <- a.elements,
+			method <- a.method
+		)
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated NewGlot -->
+      <package
+            uri="http://it.disim.mde/newGlot"
+            class="NewGlot.NewGlotPackage"
+            genModel="NewGlot.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated NewGlot -->
+      <package
+            uri="https://it.disim.mde/glot/dataConcern"
+            class="NewGlot.DataConcern.DataConcernPackage"
+            genModel="NewGlot.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated NewGlot -->
+      <package
+            uri="https://it.disim.mde/glot/contentConcern"
+            class="NewGlot.ContentConcern.ContentConcernPackage"
+            genModel="NewGlot.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated NewGlot -->
+      <package
+            uri="https://it.disim.mde/glot/formConcern"
+            class="NewGlot.FormConcern.FormConcernPackage"
+            genModel="NewGlot.genmodel"/>
+   </extension>
+
+</plugin>
